@@ -35,6 +35,7 @@ int main(int argc, char** argv) {
 
 	glutCreateWindow("First Screen");
 	CheckError("Failed to create window");
+
 	glutDisplayFunc(DrawCircle);
 	glutMainLoop();
 }
