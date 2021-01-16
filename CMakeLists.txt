@@ -6,21 +6,15 @@ cmake_minimum_required (VERSION 3.8)
 project ("opengl-crash-course")
 
 if (APPLE)
+    # fxxk Apple
     set(CMAKE_CXX_STANDARD 17)
 
     find_package(OpenGL REQUIRED)
     if (${OpenGL_FOUND})
         MESSAGE(STATUS "Found OpenGL.")
-    ELSE (${OpenGL_FOUND})
+    else(${OpenGL_FOUND})
         MESSAGE(STATUS "Could not locate OpenGL.")
-    ENDIF (${OpenGL_FOUND})
-
-    find_package(GLUT REQUIRED)
-    if (${GLUT_FOUND})
-        MESSAGE(STATUS "Found GLUT")
-    ELSE (${GLUT_FOUND})
-        MESSAGE(STATUS "Could not locate GLUT.")
-    ENDIF (${GLUT_FOUND})
+    endif (${OpenGL_FOUND})
 
     set(BREW_DIRS "/usr/local/Cellar")    # path to packages installed via homebrew
     set(GLFW_INCLUDE_DIRS "glfw/3.3.2/include")
