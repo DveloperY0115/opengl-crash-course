@@ -1,3 +1,7 @@
 # VS related
 .vs
 out
+
+# CLion related
+.idea
+cmake-build-debug
