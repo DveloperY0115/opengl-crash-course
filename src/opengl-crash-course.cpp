@@ -55,12 +55,13 @@ int main(int argc, char** argv) {
     glfwGetVersion(&major, &minor, &rev);
     fprintf(stderr, "OpenGL version detected: %d.%d.%d\n", major, minor, rev);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW Main", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 800, "GLFW Main", NULL, NULL);
     if (!window) {
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
 
+    // set window to current context
     glfwMakeContextCurrent(window);
 
     glfwSetKeyCallback(window, keyCallback);
@@ -90,16 +91,8 @@ int main(int argc, char** argv) {
             lastTime = currentTime;
         }
 
-        if (count % 2 == 0)
-            glClearColor(0, 0, 1, 0);
-        else
-            glClearColor(1, 0, 0, 0);
-
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        count++;
-
-
+        DrawCircle();
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
