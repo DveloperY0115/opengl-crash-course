@@ -1,7 +1,7 @@
 ﻿// opengl-crash-course.cpp : Defines the entry point for the application.
 //
 
-#include "opengl-crash-course.h"
+#include "opengl-crash-course.hpp"
 #define PI 3.141592
 
 using namespace std;
@@ -81,6 +81,7 @@ int main(int argc, char** argv) {
 
     double lastTime = glfwGetTime();
     int num_frames = 0;
+
     while (!glfwWindowShouldClose(window)) {
         double currentTime = glfwGetTime();
         num_frames++;
