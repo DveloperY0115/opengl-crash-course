@@ -15,6 +15,13 @@ if (APPLE)
         MESSAGE(STATUS "Could not locate OpenGL.")
     endif (${OpenGL_FOUND})
 
+    find_package(GLUT REQUIRED)
+    if (${GLUT_FOUND})
+        MESSAGE(STATUS "Found GLUT.")
+    else(${GLUT_FOUND})
+        MESSAGE(STATUS "Could not locate GLUT.")
+    endif (${GLUT_FOUND})
+
     set(BREW_DIRS "/usr/local/Cellar")    # path to packages installed via homebrew
     set(GLFW_INCLUDE_DIRS "glfw/3.3.2/include")
     set(GLFW_LIB_DIRS "glfw/3.3.2/lib/libglfw.3.dylib")
