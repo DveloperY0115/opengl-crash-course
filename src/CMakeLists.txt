@@ -6,13 +6,9 @@ cmake_minimum_required (VERSION 3.8)
 # Add subdirectory
 add_subdirectory(PA1)
 
-# Add source to this project's executable.
-# add_executable (opengl-crash-course "opengl-crash-course.cpp")
-
-# if (APPLE)
-#    target_link_libraries(opengl-crash-course "-framework OpenGL")
-#    target_link_libraries(opengl-crash-course "${BREW_DIRS}/${GLFW_LIB_DIRS}")
-#    target_link_libraries(opengl-crash-course "${BREW_DIRS}/${GLEW_LIB_DIRS}")
-# endif()
+# Build opengl-crash-course.cpp
+add_executable(opengl-crash-course "opengl-crash-course.cpp")
+target_link_libraries(opengl-crash-course "-framework OpenGL")
+target_link_libraries(opengl-crash-course "-framework GLUT")
 
 # TODO: Add tests and install targets if needed.

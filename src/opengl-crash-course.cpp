@@ -6,26 +6,25 @@
 
 using namespace std;
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GL_TRUE);
-}
+int width = 800;
+int height = 800;
 
 void DrawCircle()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-	// heckError("Buffer Clear");
+	glClear( GL_COLOR_BUFFER_BIT );
 
-	glColor3d(1.0, 0.0, 0.0);
-	// CheckError("Set color");
+#ifdef __APPLE__
+	glViewport( 0, 0, 2 * width, 2 * height );
+#endif
 
-	glBegin(GL_LINE_LOOP);
-	// CheckError("Loop Initialization failed");
+	glColor3d( 1.0, 0.0, 0.0 );
 
-	for (int i = 0; i < 360; i = i + 2) {
-			float x = cos(i * (PI) / 180);
-			float y = sin(i * (PI) / 180);
-			glVertex2d(x, y);
+	glBegin( GL_LINE_LOOP );
+
+	for ( int i = 0; i < 360; i = i + 2 ) {
+			float x = cos( i * ( PI ) / 180 );
+			float y = sin( i * ( PI ) / 180 );
+			glVertex2d( x, y );
 		}
 
 	glEnd();
@@ -33,71 +32,14 @@ void DrawCircle()
 	glFlush();
 }
 
-int main(int argc, char** argv) {
+int main( int argc, char** argv ) {
 
-    glfwSetErrorCallback(error_callback);
+    glutInit( &argc, argv );
+    glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
+    glutInitWindowSize( width, height );
+    glutCreateWindow( "Hello OpenGL!" );
 
-    if(!glfwInit()) {
-        fprintf(stderr, "Failed to initialize GLFW\n");
-        exit(EXIT_FAILURE);
-    }
+    glutDisplayFunc( DrawCircle );
 
-    /* at least OpenGL 3.3 or higher is  required */
-    /*
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    */
-    glfwWindowHint(GLFW_SAMPLES, 4);
-
-    int major, minor, rev;
-    glfwGetVersion(&major, &minor, &rev);
-    fprintf(stderr, "OpenGL version detected: %d.%d.%d\n", major, minor, rev);
-
-    GLFWwindow* window = glfwCreateWindow(800, 800, "GLFW Main", NULL, NULL);
-    if (!window) {
-        glfwTerminate();
-        exit(EXIT_FAILURE);
-    }
-
-    // set window to current context
-    glfwMakeContextCurrent(window);
-
-    glfwSetKeyCallback(window, keyCallback);
-
-    glewExperimental = GL_TRUE;
-
-    GLenum errorCode = glewInit();
-    if (GLEW_OK != errorCode) {
-        std::cerr << "Error: Failed to initialize GLEW - " << glewGetErrorString(errorCode) << std::endl;
-        glfwTerminate();
-        exit(EXIT_FAILURE);
-    }
-
-    glfwSwapInterval(1);
-
-    int count = 0;
-
-    double lastTime = glfwGetTime();
-    int num_frames = 0;
-
-    while (!glfwWindowShouldClose(window)) {
-        double currentTime = glfwGetTime();
-        num_frames++;
-
-        if (currentTime - lastTime >= 1.0) {
-            printf("%f ms/frame %d fps \n", 1000.0 / double(num_frames), num_frames);
-            num_frames = 0;
-            lastTime = currentTime;
-        }
-
-        DrawCircle();
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    // control reaches here only if user press a button to finish
-    glfwTerminate();
+    glutMainLoop();
 }
