@@ -74,7 +74,14 @@ void display() {
     // Clear the screen
     glClearColor( 0, 0, 1, 0 );
     glClear( GL_COLOR_BUFFER_BIT );
+
+#ifdef __APPLE__
+    /*
+     * Resolution of Retina Display = 4 * regular display
+     * Double the width and height of the viewport on macOS
+     */
     glViewport(0, 0, 2 * width, 2 * height);
+#endif
 
     // Setup the viewing matrices
     glMatrixMode( GL_PROJECTION );
@@ -121,7 +128,6 @@ void display() {
         glFlush();
     }
 }
-
 
 //-----------------------------------------------------------------------------
 void keyboard( unsigned char key, int x, int y ) {
@@ -189,15 +195,15 @@ void mouse( int button, int state, int mx, int my ) {
 }
 
 //------------------------------------------------------------------------------
+
 void reshape( int w, int h ) {
+
     width = w;
     height = h;
     glViewport( 0, 0, w, h );
 
-    //*
     float cx = 0.5 * ( world.r + world.l );
     float dy = world.t - world.b;;
     world.l = cx - 0.5 * dy * w / h;
     world.r = cx + 0.5 * dy * w / h;
-    //*/
 }
