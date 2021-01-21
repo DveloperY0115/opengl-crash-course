@@ -17,10 +17,10 @@ Here are the links that I used to get libraries.
 - [GLEW](http://glew.sourceforge.net)
 - [GLUT (for Windows MSVC)](https://www.transmissionzero.co.uk/software/freeglut-devel/)
 
-If you are using macOS, **I recommend you to use Homebrew to install GLUT**, since it let you manage external dependencies without putting too much effort on it.
+If you are using macOS, **I recommend you to use Homebrew to install GLUT**, since it lets you manage external dependencies without putting too much effort on it.
 (such tasks are quite tedious and error-prone)
 
-## Linux
+### Linux
 **Not tested yet**
 
 ## Project Structure
