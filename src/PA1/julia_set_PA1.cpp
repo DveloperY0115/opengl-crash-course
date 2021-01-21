@@ -2,18 +2,7 @@
 // Created by 유승우 on 2021/01/16.
 //
 
-//
-// Created by 유승우 on 2021/01/16.
-//
-
-#ifdef __APPLE__
-#define GL_SILENCE_DEPRECATION
-#include <OpenGL/glu.h>
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#include <GL/glu.h>
-#endif
+#include "opengl-crash-course.hpp"
 
 #include <cmath>
 #include <complex>
@@ -36,6 +25,7 @@ constexpr int maxIterations = 256;
 
 
 //------------------------------------------------------------------------------
+#ifdef __APPLE__
 int main( int argc, char *argv[] ) {
     glutInit( &argc, argv );
     glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
@@ -47,7 +37,19 @@ int main( int argc, char *argv[] ) {
     glutReshapeFunc( reshape );
     glutMainLoop();
 }
+#endif
 
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpszCmdParam, int nCmdShow) {
+    glutInit( &__argc, __argv );
+    glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
+    glutInitWindowSize( width, height );
+    glutCreateWindow( "Fractal Land" );
+    glutDisplayFunc( display );
+    glutMouseFunc( mouse );
+    glutKeyboardFunc( keyboard );
+    glutReshapeFunc( reshape );
+    glutMainLoop();
+}
 //------------------------------------------------------------------------------
 void julia( std::complex<float> p, std::complex<float> c, int &i, float &r ) {
     float rSqr;

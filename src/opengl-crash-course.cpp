@@ -1,6 +1,5 @@
 ﻿// opengl-crash-course.cpp : Defines the entry point for the application.
 //
-
 #include "opengl-crash-course.hpp"
 #define PI 3.141592
 
@@ -32,9 +31,22 @@ void DrawCircle()
 	glFlush();
 }
 
+#ifdef __APPLE__
 int main( int argc, char** argv ) {
 
     glutInit( &argc, argv );
+    glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
+    glutInitWindowSize( width, height );
+    glutCreateWindow( "Hello OpenGL!" );
+
+    glutDisplayFunc( DrawCircle );
+
+    glutMainLoop();
+}
+#endif
+
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpszCmdParam, int nCmdShow) {
+    glutInit( &__argc, __argv );
     glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
     glutInitWindowSize( width, height );
     glutCreateWindow( "Hello OpenGL!" );

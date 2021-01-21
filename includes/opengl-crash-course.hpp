@@ -7,10 +7,18 @@
 
 #include <iostream>
 
+// If macOS
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECATION
 #include <OpenGL/gl.h>
 #include <GLUT/glut.h>
+#endif
+
+// If MSVC
+#ifdef _MSC_VER
+#include <Windows.h>
+#include <GL/glew.h>
+#include <GL/glut.h>
 #endif
 
 /* utility functions */

@@ -5,9 +5,11 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("opengl-crash-course")
 
-if (APPLE)
-    set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
+if (APPLE)
+
+    # Find OpenGL
     find_package(OpenGL REQUIRED)
     if (${OpenGL_FOUND})
         MESSAGE(STATUS "Found OpenGL.")
@@ -15,6 +17,7 @@ if (APPLE)
         MESSAGE(STATUS "Could not locate OpenGL.")
     endif (${OpenGL_FOUND})
 
+    # Find GLUT
     find_package(GLUT REQUIRED)
     if (${GLUT_FOUND})
         MESSAGE(STATUS "Found GLUT.")
@@ -34,6 +37,39 @@ if (APPLE)
             ${BREW_DIRS}/${GLFW_INCLUDE_DIRS}
             ${BREW_DIRS}/${GLEW_INCLUDE_DIRS}
             )
+endif()
+
+if (MSVC)
+
+    # Find OpenGL
+    find_package(OpenGL REQUIRED)
+    if (${OpenGL_FOUND})
+        MESSAGE(STATUS "Found OpenGL.")
+        # MESSAGE(STATUS "  OpenGL include directory:" ${OPENGL_INCLUDE_DIRS})
+    else(${OpenGL_FOUND})
+        MESSAGE(STATUS "Could not locate OpenGL.")
+    endif (${OpenGL_FOUND})
+
+    # Find GLEW
+    find_package(GLEW REQUIRED)
+    if (${GLEW_FOUND})
+        MESSAGE(STATUS "Found GLEW.")
+        MESSAGE(STATUS "  GLEW include directory:" ${GLEW_INCLUDE_DIRS})
+    else(${GLEW_FOUND})
+        MESSAGE(STATUS "Could not locate GLEW.")
+    endif (${GLEW_FOUND})
+
+    # Find GLUT
+   find_package(GLUT REQUIRED)
+    if (${GLUT_FOUND})
+        MESSAGE(STATUS "Found GLUT.")
+        MESSAGE(STATUS "  GLUT include directory:" ${GLUT_INCLUDE_DIR})
+
+    else(${GLUT_FOUND})
+        MESSAGE(STATUS "Could not locate GLUT.")
+    endif (${GLUT_FOUND})
+
+    include_directories( ${OpenGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} )
 endif()
 
 # Include files
