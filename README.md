@@ -15,7 +15,7 @@ A C/C++ project repository using OpenGL which is created on the purpose of prepa
 ### macOS 
 Using Apple's framework is straightforward.
 - **OpenGL**
-- **GLUT
+- **GLUT**
 
 Here are the links that I used to get libraries.
 - [GLEW](http://glew.sourceforge.net)
