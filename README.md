@@ -12,16 +12,14 @@ A C/C++ project repository using OpenGL which is created on the purpose of prepa
 - **GLEW** 
 - **GLUT (freeGLUT is also fine)**
 
-### macOS (Using Apple's framework is straightforward)
+### macOS 
+Using Apple's framework is straightforward.
 - **OpenGL**
-- **GLUT (freeGLUT is also fine)**
+- **GLUT
 
 Here are the links that I used to get libraries.
 - [GLEW](http://glew.sourceforge.net)
 - [GLUT (for Windows MSVC)](https://www.transmissionzero.co.uk/software/freeglut-devel/)
-
-If you are using macOS, **I recommend you to use Homebrew to install any dependencies**, since it lets you manage external dependencies without putting too much effort on it.
-(such tasks are quite tedious and error-prone)
 
 ### Linux
 **Not tested yet**
