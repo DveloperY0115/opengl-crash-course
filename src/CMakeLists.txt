@@ -6,6 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 # Add subdirectory
 add_subdirectory(examples)
 add_subdirectory(PA1)
+add_subdirectory(PA2_Apple)
 
 # Build opengl-crash-course.cpp
 if (APPLE)
