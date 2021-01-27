@@ -39,6 +39,7 @@ int main( int argc, char *argv[] ) {
 }
 #endif
 
+#ifdef _MSC_VER
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpszCmdParam, int nCmdShow) {
     glutInit( &__argc, __argv );
     glutInitDisplayMode( GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH );
@@ -50,6 +51,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR IpszCmd
     glutReshapeFunc( reshape );
     glutMainLoop();
 }
+#endif
+
 //------------------------------------------------------------------------------
 void julia( std::complex<float> p, std::complex<float> c, int &i, float &r ) {
     float rSqr;
