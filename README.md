@@ -12,7 +12,8 @@ A C/C++ project repository using OpenGL which is created on the purpose of prepa
 - **GLEW** 
 - **GLUT (freeGLUT is also fine)**
 
-### macOS (Using Apple's framework is straightforward)
+### macOS
+The most straightforward way is to use the implementation from Apple.
 - **OpenGL**
 - **GLUT (freeGLUT is also fine)**
 

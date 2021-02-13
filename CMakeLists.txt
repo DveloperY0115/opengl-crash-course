@@ -8,7 +8,6 @@ project ("opengl-crash-course")
 set(CMAKE_CXX_STANDARD 17)
 
 if (APPLE)
-
     # Find OpenGL
     find_package(OpenGL REQUIRED)
     if (${OpenGL_FOUND})
