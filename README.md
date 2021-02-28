@@ -6,7 +6,9 @@
 A C/C++ project repository using OpenGL which is created on the purpose of preparing for **[CS380: Introduction to Computer Graphics]** course held at KAIST in spring 2021. This project is built on C++17 and can be compiled using g++, clang++, and MSVC. Currently, this project supports Windows and macOS only (I haven't tested the codes on Linux and other UNIX-family systems yet).
 
 ## Dependencies
-**I'll write a detailed post regarding installing & running the project soon.**
+
+**[KOREAN]** [How to set up environments on macOS & Windows](https://dvelopery0115.github.io/opengl/OpenGL-Setup/)
+
 ### Windows
 - **OpenGL**
 - **GLEW** 
